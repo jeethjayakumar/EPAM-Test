@@ -12,6 +12,7 @@ using namespace std;
 using namespace std;
 
 void calculate_path(int row, int coln, int max_row, int max_coln, TrackMatrix **tracker, int **inp_height);
+
 // TrackMatrix method defn
 
 void TrackMatrix::setAtl(bool flag){rchAtl = flag;}
@@ -55,7 +56,7 @@ void setContDivide(int row, int coln, int **inp_height, vector<Coordinate>& cont
 	{
 		for (j = 0; j < coln; j++)
 		{
-			if (tracker[i][j].getVisit() != false)
+			if (tracker[i][j].getVisit() == false)
 				calculate_path(i, j, row, coln, tracker, inp_height);
 		}
 	}
@@ -73,6 +74,12 @@ void setContDivide(int row, int coln, int **inp_height, vector<Coordinate>& cont
 				contDivide.push_back(tmp_coordinates);
 			}
 		}
+	}
+
+	// Releasing memory
+	for (i = 0; i < row; i++)
+	{
+		delete [] tracker[i];
 	}
 }
 
@@ -94,7 +101,7 @@ void calculate_path(int row, int coln, int max_row, int max_coln, TrackMatrix **
 	}
 
 	// Moving down
-	if (row != max_row - 1 &&
+	if (row != (max_row - 1) &&
 		inp_height[row][coln] >= inp_height[row+1][coln])
 	{
 		if (tracker[row+1][coln].getVisit() != true)
