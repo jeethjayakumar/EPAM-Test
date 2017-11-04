@@ -9,7 +9,6 @@
 #include "MapStructDef.hpp"
 using namespace std;
 
-using namespace std;
 
 void calculate_path(int row, int coln, int max_row, int max_coln, TrackMatrix **tracker, int **inp_height);
 
