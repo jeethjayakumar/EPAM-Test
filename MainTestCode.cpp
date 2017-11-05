@@ -36,5 +36,9 @@ int main()
 		cout<<"("<<it->getRow()<<","<<it->getColn()<<") ";
 	}
 
+	for (i = 0; i < 5; i++)
+		delete[] height[i];
+	delete[] height;
+
 	return 0;
 }
