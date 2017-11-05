@@ -9,6 +9,7 @@
 #include "MapStructDef.hpp"
 using namespace std;
 
+using namespace std;
 
 void calculate_path(int row, int coln, int max_row, int max_coln, TrackMatrix **tracker, int **inp_height);
 
@@ -77,9 +78,8 @@ void setContDivide(int row, int coln, int **inp_height, vector<Coordinate>& cont
 
 	// Releasing memory
 	for (i = 0; i < row; i++)
-	{
-		delete [] tracker[i];
-	}
+		delete[] tracker[i];
+	delete[] tracker;
 }
 
 void calculate_path(int row, int coln, int max_row, int max_coln, TrackMatrix **tracker, int **inp_height)
@@ -123,6 +123,7 @@ void calculate_path(int row, int coln, int max_row, int max_coln, TrackMatrix **
 		tracker[row][coln].setAtl(rchAtl);
 	}
 
+	// Moving right
 	if (coln != (max_coln - 1) &&
 		inp_height[row][coln] >= inp_height[row][coln+1])
 	{
