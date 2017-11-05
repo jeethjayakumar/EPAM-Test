@@ -31,13 +31,12 @@ int main()
 			goto END;
 		}
 		tmp_dig = (int)tmp[0] - 48;
-		//cout << "tmp = "<<tmp<<" , tmp_dig = "<<tmp_dig<<endl;
 		if ((tmp_dig < 0) || (tmp_dig > 9))
 		{
 			cout<<"Invalid input entered. Re-execute the binary and enter the digit from 0 to 9!!! Aborting!!!"<<endl;
 			goto END;
 		}
-		cin>>a[i];
+		a[i] = tmp_dig;
 	}
 
 	arraydata_increment(a, num_digit);
@@ -54,19 +53,17 @@ int main()
 	cout<<endl;
 
 END:
+	delete[] a;
 	return 0;
 }
 
 void arraydata_increment(int *a, int &num_dig)
 {
 	int i;
-
 	for (i = num_dig; i >= 0 ; i--)
 	{
 		if (a[i] == 9)
-		{
 			a[i] = 0;
-		}
 		else
 		{
 			a[i]++;
